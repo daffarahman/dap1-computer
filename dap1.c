@@ -6,6 +6,12 @@
 #include <string.h>
 #include <stdbool.h>
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#define CLRSCR "cls"
+#else
+#define CLRSCR "clear"
+#endif
+
 #define usint unsigned short int
 #define ll long long
 
@@ -92,7 +98,7 @@ int main(int argc, char* argv[])
 
     while(true)
     {
-        system("cls");
+        system(CLRSCR);
         cpu_display(&cpu, 0, 0xff);
 
         if(getchar() == '\n') {
